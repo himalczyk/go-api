@@ -5,6 +5,7 @@
 Django
 Vagrant (Ubuntu)
 Virtual Box
+ModHeader Google Chrome extension
 
 This is a practice of creating a REST API with Python and Django including:
 
