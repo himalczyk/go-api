@@ -114,3 +114,21 @@ class UserLoginApiView(ObtainAuthToken):
     
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
     
+class UserProfileFeedItemViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating profile feed items"""
+    
+    # user token auth to auth requests, comma at the end to pass it in as a tuple
+    authentication_classes = (TokenAuthentication,)
+    # set a serializer class created in serializers for the view
+    serializer_class = serializers.ProfileFeedItemSerializer
+    # assign a queryset that is going to be managed by the viewset
+    queryset = models.ProfileFeedItem.objects.all()
+    
+    # build in django feature allows overwriting/customizing behavior. gets called by every https post
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        # request is an object that gets passed to all viewsets every time a request is made, contains all details about the request being made to the viewset
+        # if user is authenticated request has the user field
+        serializer.save(user_profile=self.request.user)
+        
+    
