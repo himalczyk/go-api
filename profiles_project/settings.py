@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rllgpa^&0x1f&#y*hhasgr7ltwrdl(i-st+@r9t%=4)odhn&bq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
 ALLOWED_HOSTS = []
 
@@ -121,6 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# tell django to store static files here, connected to line $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput in setup.sh deploy folderfile
+STATIC_ROOT = 'static/'
 
 #set custom user model from profiles_api app model (class) UserProfile
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
