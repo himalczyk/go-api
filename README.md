@@ -6,6 +6,7 @@ Django
 Vagrant (Ubuntu)
 Virtual Box
 ModHeader Google Chrome extension
+AWS
 
 This is a practice of creating a REST API with Python and Django including:
 
@@ -16,6 +17,11 @@ This is a practice of creating a REST API with Python and Django including:
 - Connecting the django app with a sqlite database
 - Building a self documenting REST API
 - Handle user registration, login, status and context updates
+
+DOCS:
+
+https://www.django-rest-framework.org/
+https://docs.djangoproject.com/en/4.0/
 
 <!-- /TOC -->
 
