@@ -7,6 +7,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from profiles_api import serializers
 from profiles_api import models
@@ -123,6 +124,11 @@ class UserProfileFeedItemViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProfileFeedItemSerializer
     # assign a queryset that is going to be managed by the viewset
     queryset = models.ProfileFeedItem.objects.all()
+    # user authentication or read only requests allowed
+    permission_classes = (
+        permissions.UpdateOwnStatus,
+        IsAuthenticatedOrReadOnly
+    )
     
     # build in django feature allows overwriting/customizing behavior. gets called by every https post
     def perform_create(self, serializer):
