@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
 ALLOWED_HOSTS = ['ec2-3-86-26-242.compute-1.amazonaws.com',
-                 '127.0.0.1'
+                 '127.0.0.1', 'http://localhost:8000/', 'localhost'
 ]
 
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'profiles_api',
+    'pokemon_api'
 ]
 
 MIDDLEWARE = [
